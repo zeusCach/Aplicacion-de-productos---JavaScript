@@ -24,7 +24,7 @@ class UI {
                             <p class="card-text">
                                 <strong>📅 Año:</strong> ${product.year}
                             </p>
-                    <button class="btn btn-outline-danger btn-sm" id="eliminar" >Eliminar</button>
+                    <a class="btn btn-outline-danger btn-sm" id="delete" >Eliminar</a>
                     </div>
             </div>
 `;
@@ -32,14 +32,18 @@ class UI {
         productList.appendChild(element);
     }
 
-    resetForm = () => document.getElementById("product-form").reset()
+    resetForm = () => document.getElementById("product-form").reset();
     
 
-    deletProduct() {
+    deletProduct(element) {
+        if(element.id === "delete") {
+            element.parentElement.parentElement.parentElement.remove(); //Comprueba el elemento padre y elimina
+        }
     }
 
-    showMessage() {
-
+    showMessage(message, cssClass) {
+        const div = document.createElement("div");
+        div.className(); //Asigna comentario a nuestro div creado con createElement
     }
 }
 
@@ -63,3 +67,11 @@ document
         ui.deletProduct(product);
         ui.resetForm()
     });
+
+document.getElementById("product-list").addEventListener("click", (e) => {
+  
+    const ui = new UI();
+
+    ui.deletProduct(e.target)
+
+})
